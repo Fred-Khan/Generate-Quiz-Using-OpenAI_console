@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net7.0</TargetFramework>
+    <RootNamespace>Generate_Quiz_Using_OpenAI_console</RootNamespace>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="newtonsoft.json" Version="13.0.3" />
+    <PackageReference Include="npgsql" Version="7.0.4" />
+  </ItemGroup>
+
+</Project>

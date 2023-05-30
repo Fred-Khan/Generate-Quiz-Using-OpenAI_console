@@ -5,7 +5,7 @@ This is a console app that uses  **OpenAI API** to generate quizzes that has mul
 <ol><li>Connects to OpenAI API, sends request to generate a quiz with correct answers and return it in **JSON** format.</li>
 <li>The JSON response is then parsed. If no valid response is given, the program will throw up an error message and halt execution.<br><em>(Note: Once in a while the JSON response given is not formmatted correctly thus causing error when parsing.)</em></li>
 <li>Once the JSON has been parsed, the program will create the required tables, if it does not exist, to hold the data according the following ERD:</li>
-![Quiz Entity Relationship Diagram](quizdev_erd.png)
+![Quiz Entity Relationship Diagram](https://github.com/Fred-Khan/Generate-Quiz-Using-OpenAI_console/blob/main/quizdev_erd.png)
 <li>The program will now insert the data into the appropriate tables.</li>
 </ol>
 

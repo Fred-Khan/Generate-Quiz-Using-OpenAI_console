@@ -38,6 +38,9 @@ public class Quiz
                 return;
             }
 
+            Console.WriteLine("\nInserting into tables...");
+            Console.WriteLine("------------------------.");
+
             // Declare variable to hold the prompt ID generated from inserting this prompt
             int prompt_ID = 0;
 

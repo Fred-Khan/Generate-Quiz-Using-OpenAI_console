@@ -32,9 +32,9 @@ public static class Openai
 
             responseStatusCode = response.StatusCode.ToString(); // Get the response status code
 
-            if (response.IsSuccessStatusCode) // If the response is successful
+            if (response.IsSuccessStatusCode) // If the response is successful check and fix the JSON first before deserialising
             {
-                string responseContent = await response.Content.ReadAsStringAsync(); // Read the response content as string
+                string responseContent =  APIResponse.CheckAndFixJson(await response.Content.ReadAsStringAsync()); // Read the response content as string
 
                 try // Try to deserialise the response content
                 {
@@ -58,9 +58,9 @@ public static class Openai
                     Console.WriteLine("\nERROR: An error occurred during deserialization from OpenAI: " + ex.Message);
                 }
             }
-            else
+            else // Response statuscocde indicates an error. Display the statuscode
             {
-                Console.WriteLine($"\nERROR: Failed to generate the quiz. Status code: {responseStatusCode}");
+                Console.WriteLine($"\nERROR: There was a problem communicating with the API. Status code: {responseStatusCode}");
             }
         }
 

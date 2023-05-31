@@ -192,6 +192,38 @@ End Class
 </code>
 
 
+<br>
+<code>
+
+Class APIResponse<br>
+
+
+	Function CheckAndFixJson(jsonString):
+		If jsonString is null or empty:
+			Return jsonString
+
+		obj = ParseJson(jsonString)
+		For each property in obj.Properties():
+			nestedObj = property.Value as JObject
+			If nestedObj is not null:
+				optionsProperty = nestedObj.Property("Options")
+				If optionsProperty is not null:
+					optionsArray = CreateEmptyArray()
+					For each optionProperty in optionsProperty.Value:
+						optionObj = CreateEmptyObject()
+						optionObj.AddProperty("OptionName", optionProperty.Name)
+						optionObj.AddProperty("OptionText", optionProperty.Value)
+						optionsArray.Add(optionObj)
+					optionsProperty.Value.Replace(optionsArray)
+		
+		Return obj.ToString()
+
+    End Function
+End Class
+
+</code>
+
+
 Program flowchart
 ----------------
 The main program.cs has an async Main() that will check for the existence of Settings.user file. 

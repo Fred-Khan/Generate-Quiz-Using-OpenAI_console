@@ -178,6 +178,20 @@ public class Quiz
                     ON UPDATE CASCADE)";
         cmd.ExecuteNonQuery();
 
+        cmd.CommandText = @"CREATE TABLE IF NOT EXISTS  quiz_users (login_name VARCHAR NOT NULL UNIQUE,
+                first_name VARCHAR NOT NULL,
+                last_name VARCHAR NOT NULL)";
+        cmd.ExecuteNonQuery();
+
+        cmd.CommandText = @"CREATE TABLE IF NOT EXISTS  quiz_history (login_name VARCHAR NOT NULL,
+                question_id INTEGER NOT NULL,
+                option_name CHAR NOT NULL,
+                FOREIGN KEY (login_name)
+                    REFERENCES quiz_users (login_name)
+                    ON DELETE CASCADE
+                    ON UPDATE CASCADE)";
+        cmd.ExecuteNonQuery();
+
         con.Close();
 
     }
